@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "409301366186",
+    "project_id": "nd940-location-reminder-96425",
+    "storage_bucket": "nd940-location-reminder-96425.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:409301366186:android:1e50ce4e8856b102d3e7d3",
+        "android_client_info": {
+          "package_name": "com.abdallah_abdelazim.locationreminder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "409301366186-2pnpb2g4d9jfn0u4e1h9a1j0rbvufa0j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWMulLHtx-yX8Vpf5_aAfeOMFXaSpCtX4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "409301366186-2pnpb2g4d9jfn0u4e1h9a1j0rbvufa0j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
