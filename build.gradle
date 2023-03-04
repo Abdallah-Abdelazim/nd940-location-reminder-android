@@ -20,6 +20,7 @@ ext {
             material          : "1.8.0",
             constraintlayout  : "2.1.4",
             recyclerview      : "1.2.1",
+            swiperefreshlayout: "1.1.0",
             lifecycle         : "2.5.1",
             navigation        : "2.5.3",
             room              : "2.5.0",
@@ -29,6 +30,9 @@ ext {
             espresso          : "3.5.1",
             koin              : "3.3.2",
             firebase_bom      : "31.2.3",
-            firebase_ui_auth: "7.2.0"
+            firebase_ui_auth  : "7.2.0",
+            maps              : "18.1.0",
+            location          : "21.0.1",
+            maps_ktx          : "3.2.1"
     ]
 }

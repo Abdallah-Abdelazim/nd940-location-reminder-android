@@ -16,7 +16,7 @@ android {
     defaultConfig {
         applicationId "com.abdallah_abdelazim.locationreminder"
         minSdk 21
-        targetSdk 33
+        targetSdk 32
         versionCode 1
         versionName "1.0.0"
 
@@ -58,6 +58,7 @@ dependencies {
     implementation "com.google.android.material:material:$versions.material"
     implementation "androidx.constraintlayout:constraintlayout:$versions.constraintlayout"
     implementation "androidx.recyclerview:recyclerview:$versions.recyclerview"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$versions.swiperefreshlayout"
 
     // Lifecycle
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle"
@@ -78,6 +79,12 @@ dependencies {
 
     // Koin DI
     implementation "io.insert-koin:koin-android:$versions.koin"
+
+    // Google Maps
+    implementation "com.google.android.gms:play-services-maps:$versions.maps"
+    implementation "com.google.android.gms:play-services-location:$versions.location"
+    implementation "com.google.maps.android:maps-ktx:$versions.maps_ktx"
+    implementation "com.google.maps.android:maps-utils-ktx:$versions.maps_ktx"
 
     // Firebase
     implementation platform("com.google.firebase:firebase-bom:$versions.firebase_bom")

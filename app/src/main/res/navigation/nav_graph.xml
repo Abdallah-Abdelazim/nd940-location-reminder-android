@@ -1,28 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/reminderListFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.abdallah_abdelazim.locationreminder.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
-
+        android:id="@+id/reminderListFragment"
+        android:name="com.abdallah_abdelazim.locationreminder.locationreminders.reminderslist.ReminderListFragment"
+        android:label="ReminderListFragment">
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/to_save_reminder"
+            app:destination="@id/saveReminderFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.abdallah_abdelazim.locationreminder.locationreminders.RemindersActivity"
+        android:label="MainActivity" />
+    <fragment
+        android:id="@+id/saveReminderFragment"
+        android:name="com.abdallah_abdelazim.locationreminder.locationreminders.savereminder.SaveReminderFragment"
+        android:label="Add Reminder">
+        <action
+            android:id="@+id/action_saveReminderFragment_to_reminderListFragment"
+            app:destination="@id/reminderListFragment" />
+        <action
+            android:id="@+id/action_saveReminderFragment_to_selectLocationFragment"
+            app:destination="@id/selectLocationFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.abdallah_abdelazim.locationreminder.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        android:id="@+id/selectLocationFragment"
+        android:name="com.abdallah_abdelazim.locationreminder.locationreminders.savereminder.selectreminderlocation.SelectLocationFragment"
+        android:label="Select Location" />
 
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
-    </fragment>
 </navigation>
