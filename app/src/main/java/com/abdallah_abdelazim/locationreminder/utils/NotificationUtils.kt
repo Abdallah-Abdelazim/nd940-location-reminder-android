@@ -9,10 +9,10 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.TaskStackBuilder
 import com.abdallah_abdelazim.locationreminder.BuildConfig
 import com.abdallah_abdelazim.locationreminder.R
-import com.abdallah_abdelazim.locationreminder.locationreminders.ReminderDescriptionActivity
-import com.abdallah_abdelazim.locationreminder.locationreminders.reminderslist.ReminderDataItem
+import com.abdallah_abdelazim.locationreminder.reminders.ReminderDescriptionActivity
+import com.abdallah_abdelazim.locationreminder.reminders.reminderslist.ReminderDataItem
 
-private const val NOTIFICATION_CHANNEL_ID = BuildConfig.APPLICATION_ID + ".channel"
+private const val NOTIFICATION_CHANNEL_ID = "${BuildConfig.APPLICATION_ID}.channel"
 
 fun sendNotification(context: Context, reminderDataItem: ReminderDataItem) {
     val notificationManager = context
@@ -40,7 +40,7 @@ fun sendNotification(context: Context, reminderDataItem: ReminderDataItem) {
     val notificationPendingIntent = stackBuilder
         .getPendingIntent(getUniqueId(), PendingIntent.FLAG_UPDATE_CURRENT)
 
-//    build the notification object with the data to be shown
+    // build the notification object with the data to be shown
     val notification = NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
         .setSmallIcon(R.mipmap.ic_launcher)
         .setContentTitle(reminderDataItem.title)

@@ -1,12 +1,12 @@
-package com.abdallah_abdelazim.locationreminder.locationreminders.geofence
+package com.abdallah_abdelazim.locationreminder.reminders.geofence
 
 import android.content.Context
 import android.content.Intent
 import androidx.core.app.JobIntentService
-import com.abdallah_abdelazim.locationreminder.locationreminders.data.ReminderDataSource
-import com.abdallah_abdelazim.locationreminder.locationreminders.data.dto.ReminderDTO
-import com.abdallah_abdelazim.locationreminder.locationreminders.data.dto.Result
-import com.abdallah_abdelazim.locationreminder.locationreminders.reminderslist.ReminderDataItem
+import com.abdallah_abdelazim.locationreminder.reminders.data.ReminderDataSource
+import com.abdallah_abdelazim.locationreminder.reminders.data.dto.ReminderDTO
+import com.abdallah_abdelazim.locationreminder.reminders.data.dto.Result
+import com.abdallah_abdelazim.locationreminder.reminders.reminderslist.ReminderDataItem
 import com.abdallah_abdelazim.locationreminder.utils.sendNotification
 import com.google.android.gms.location.Geofence
 import kotlinx.coroutines.*

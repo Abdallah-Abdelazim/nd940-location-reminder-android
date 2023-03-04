@@ -1,8 +1,8 @@
-package com.abdallah_abdelazim.locationreminder.locationreminders.data.local
+package com.abdallah_abdelazim.locationreminder.reminders.data.local
 
-import com.abdallah_abdelazim.locationreminder.locationreminders.data.ReminderDataSource
-import com.abdallah_abdelazim.locationreminder.locationreminders.data.dto.ReminderDTO
-import com.abdallah_abdelazim.locationreminder.locationreminders.data.dto.Result
+import com.abdallah_abdelazim.locationreminder.reminders.data.ReminderDataSource
+import com.abdallah_abdelazim.locationreminder.reminders.data.dto.ReminderDTO
+import com.abdallah_abdelazim.locationreminder.reminders.data.dto.Result
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

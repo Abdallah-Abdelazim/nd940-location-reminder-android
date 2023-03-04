@@ -1,8 +1,8 @@
-package com.abdallah_abdelazim.locationreminder.locationreminders.data.local
+package com.abdallah_abdelazim.locationreminder.reminders.data.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.abdallah_abdelazim.locationreminder.locationreminders.data.dto.ReminderDTO
+import com.abdallah_abdelazim.locationreminder.reminders.data.dto.ReminderDTO
 
 /**
  * The Room Database that contains the reminders table.

@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/reminderListFragment"
-        android:name="com.abdallah_abdelazim.locationreminder.locationreminders.reminderslist.ReminderListFragment"
+        android:name="com.abdallah_abdelazim.locationreminder.reminders.reminderslist.ReminderListFragment"
         android:label="ReminderListFragment">
         <action
             android:id="@+id/to_save_reminder"
@@ -14,11 +14,11 @@
     </fragment>
     <activity
         android:id="@+id/mainActivity"
-        android:name="com.abdallah_abdelazim.locationreminder.locationreminders.RemindersActivity"
+        android:name="com.abdallah_abdelazim.locationreminder.reminders.RemindersActivity"
         android:label="MainActivity" />
     <fragment
         android:id="@+id/saveReminderFragment"
-        android:name="com.abdallah_abdelazim.locationreminder.locationreminders.savereminder.SaveReminderFragment"
+        android:name="com.abdallah_abdelazim.locationreminder.reminders.savereminder.SaveReminderFragment"
         android:label="Add Reminder">
         <action
             android:id="@+id/action_saveReminderFragment_to_reminderListFragment"
@@ -29,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/selectLocationFragment"
-        android:name="com.abdallah_abdelazim.locationreminder.locationreminders.savereminder.selectreminderlocation.SelectLocationFragment"
+        android:name="com.abdallah_abdelazim.locationreminder.reminders.savereminder.selectreminderlocation.SelectLocationFragment"
         android:label="Select Location" />
 
 </navigation>

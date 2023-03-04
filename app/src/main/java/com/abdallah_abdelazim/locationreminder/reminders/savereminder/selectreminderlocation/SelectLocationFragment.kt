@@ -1,4 +1,4 @@
-package com.abdallah_abdelazim.locationreminder.locationreminders.savereminder.selectreminderlocation
+package com.abdallah_abdelazim.locationreminder.reminders.savereminder.selectreminderlocation
 
 
 import android.os.Bundle
@@ -7,14 +7,14 @@ import androidx.databinding.DataBindingUtil
 import com.abdallah_abdelazim.locationreminder.R
 import com.abdallah_abdelazim.locationreminder.base.BaseFragment
 import com.abdallah_abdelazim.locationreminder.databinding.FragmentSelectLocationBinding
-import com.abdallah_abdelazim.locationreminder.locationreminders.savereminder.SaveReminderViewModel
+import com.abdallah_abdelazim.locationreminder.reminders.savereminder.SaveReminderViewModel
 import com.abdallah_abdelazim.locationreminder.utils.setDisplayHomeAsUpEnabled
 import org.koin.android.ext.android.inject
 
 class SelectLocationFragment : BaseFragment() {
 
     //Use Koin to get the view model of the SaveReminder
-    override val _viewModel: SaveReminderViewModel by inject()
+    override val viewModel: SaveReminderViewModel by inject()
     private lateinit var binding: FragmentSelectLocationBinding
 
     override fun onCreateView(
@@ -23,7 +23,7 @@ class SelectLocationFragment : BaseFragment() {
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_select_location, container, false)
 
-        binding.viewModel = _viewModel
+        binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
         setHasOptionsMenu(true)

@@ -1,4 +1,4 @@
-package com.abdallah_abdelazim.locationreminder.locationreminders.reminderslist
+package com.abdallah_abdelazim.locationreminder.reminders.reminderslist
 
 import java.io.Serializable
 import java.util.*

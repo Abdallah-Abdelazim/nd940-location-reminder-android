@@ -1,4 +1,4 @@
-package com.abdallah_abdelazim.locationreminder.locationreminders
+package com.abdallah_abdelazim.locationreminder.reminders
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

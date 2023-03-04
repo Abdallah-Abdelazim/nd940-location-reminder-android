@@ -1,12 +1,12 @@
-package com.abdallah_abdelazim.locationreminder.locationreminders.reminderslist
+package com.abdallah_abdelazim.locationreminder.reminders.reminderslist
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.abdallah_abdelazim.locationreminder.base.BaseViewModel
-import com.abdallah_abdelazim.locationreminder.locationreminders.data.ReminderDataSource
-import com.abdallah_abdelazim.locationreminder.locationreminders.data.dto.ReminderDTO
-import com.abdallah_abdelazim.locationreminder.locationreminders.data.dto.Result
+import com.abdallah_abdelazim.locationreminder.reminders.data.ReminderDataSource
+import com.abdallah_abdelazim.locationreminder.reminders.data.dto.ReminderDTO
+import com.abdallah_abdelazim.locationreminder.reminders.data.dto.Result
 import kotlinx.coroutines.launch
 
 class RemindersListViewModel(

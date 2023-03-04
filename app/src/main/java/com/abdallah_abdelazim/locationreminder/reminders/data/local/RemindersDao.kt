@@ -1,10 +1,10 @@
-package com.abdallah_abdelazim.locationreminder.locationreminders.data.local
+package com.abdallah_abdelazim.locationreminder.reminders.data.local
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.abdallah_abdelazim.locationreminder.locationreminders.data.dto.ReminderDTO
+import com.abdallah_abdelazim.locationreminder.reminders.data.dto.ReminderDTO
 
 /**
  * Data Access Object for the reminders table.

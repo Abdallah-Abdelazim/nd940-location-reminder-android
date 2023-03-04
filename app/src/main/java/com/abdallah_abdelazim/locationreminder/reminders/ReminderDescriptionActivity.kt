@@ -1,4 +1,4 @@
-package com.abdallah_abdelazim.locationreminder.locationreminders
+package com.abdallah_abdelazim.locationreminder.reminders
 
 import android.content.Context
 import android.content.Intent
@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.abdallah_abdelazim.locationreminder.R
 import com.abdallah_abdelazim.locationreminder.databinding.ActivityReminderDescriptionBinding
-import com.abdallah_abdelazim.locationreminder.locationreminders.reminderslist.ReminderDataItem
+import com.abdallah_abdelazim.locationreminder.reminders.reminderslist.ReminderDataItem
 
 /**
  * Activity that displays the reminder details after the user clicks on the notification

@@ -1,4 +1,4 @@
-package com.abdallah_abdelazim.locationreminder.locationreminders.data.dto
+package com.abdallah_abdelazim.locationreminder.reminders.data.dto
 
 
 /**

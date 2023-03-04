@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
-        android:name=".MyApp"
+        android:name=".LocationReminderApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -24,7 +24,7 @@
             android:value="${MAPS_API_KEY}" />
 
         <activity
-            android:name=".locationreminders.RemindersActivity"
+            android:name=".reminders.RemindersActivity"
             android:exported="true">
 
             <intent-filter>
@@ -37,15 +37,15 @@
 
         <activity android:name=".authentication.AuthenticationActivity" />
 
-        <activity android:name=".locationreminders.ReminderDescriptionActivity" />
+        <activity android:name=".reminders.ReminderDescriptionActivity" />
 
         <receiver
-            android:name=".locationreminders.geofence.GeofenceBroadcastReceiver"
+            android:name=".reminders.geofence.GeofenceBroadcastReceiver"
             android:enabled="true"
             android:exported="true" />
 
         <service
-            android:name=".locationreminders.geofence.GeofenceTransitionsJobIntentService"
+            android:name=".reminders.geofence.GeofenceTransitionsJobIntentService"
             android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE" />
     </application>

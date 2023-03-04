@@ -1,4 +1,4 @@
-package com.abdallah_abdelazim.locationreminder.locationreminders.geofence
+package com.abdallah_abdelazim.locationreminder.reminders.geofence
 
 import android.content.BroadcastReceiver
 import android.content.Context

@@ -1,4 +1,4 @@
-package com.abdallah_abdelazim.locationreminder.locationreminders.reminderslist
+package com.abdallah_abdelazim.locationreminder.reminders.reminderslist
 
 import com.abdallah_abdelazim.locationreminder.R
 import com.abdallah_abdelazim.locationreminder.base.BaseRecyclerViewAdapter

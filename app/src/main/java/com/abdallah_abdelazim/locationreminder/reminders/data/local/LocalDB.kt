@@ -1,4 +1,4 @@
-package com.abdallah_abdelazim.locationreminder.locationreminders.data.local
+package com.abdallah_abdelazim.locationreminder.reminders.data.local
 
 import android.content.Context
 import androidx.room.Room

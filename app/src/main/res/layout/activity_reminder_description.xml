@@ -7,7 +7,7 @@
         <!--Data item that holds the reminder details-->
         <variable
             name="reminderDataItem"
-            type="com.abdallah_abdelazim.locationreminder.locationreminders.reminderslist.ReminderDataItem" />
+            type="com.abdallah_abdelazim.locationreminder.reminders.reminderslist.ReminderDataItem" />
     </data>
 
     <LinearLayout
@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        tools:context=".locationreminders.ReminderDescriptionActivity">
+        tools:context=".reminders.ReminderDescriptionActivity">
         <!--TODO: add the design of the reminder details-->
 
         <TextView

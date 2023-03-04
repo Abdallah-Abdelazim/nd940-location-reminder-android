@@ -1,4 +1,4 @@
-package com.abdallah_abdelazim.locationreminder.locationreminders.savereminder
+package com.abdallah_abdelazim.locationreminder.reminders.savereminder
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
@@ -6,9 +6,9 @@ import androidx.lifecycle.viewModelScope
 import com.abdallah_abdelazim.locationreminder.R
 import com.abdallah_abdelazim.locationreminder.base.BaseViewModel
 import com.abdallah_abdelazim.locationreminder.base.NavigationCommand
-import com.abdallah_abdelazim.locationreminder.locationreminders.data.ReminderDataSource
-import com.abdallah_abdelazim.locationreminder.locationreminders.data.dto.ReminderDTO
-import com.abdallah_abdelazim.locationreminder.locationreminders.reminderslist.ReminderDataItem
+import com.abdallah_abdelazim.locationreminder.reminders.data.ReminderDataSource
+import com.abdallah_abdelazim.locationreminder.reminders.data.dto.ReminderDTO
+import com.abdallah_abdelazim.locationreminder.reminders.reminderslist.ReminderDataItem
 import com.google.android.gms.maps.model.PointOfInterest
 import kotlinx.coroutines.launch
 

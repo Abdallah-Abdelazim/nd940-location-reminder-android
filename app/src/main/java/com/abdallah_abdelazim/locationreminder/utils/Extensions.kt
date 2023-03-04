@@ -23,20 +23,17 @@ fun <T> RecyclerView.setup(
 }
 
 fun Fragment.setTitle(title: String) {
-    if (activity is AppCompatActivity) {
-        (activity as AppCompatActivity).supportActionBar?.title = title
-    }
+    (activity as? AppCompatActivity)?.supportActionBar?.title = title
 }
 
 fun Fragment.setDisplayHomeAsUpEnabled(bool: Boolean) {
-    if (activity is AppCompatActivity) {
-        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(
-            bool
-        )
-    }
+    (activity as? AppCompatActivity)?.supportActionBar
+        ?.setDisplayHomeAsUpEnabled(bool)
 }
 
-//animate changing the view visibility
+/**
+ * Animate changing the view visibility.
+ */
 fun View.fadeIn() {
     this.visibility = View.VISIBLE
     this.alpha = 0f
@@ -47,7 +44,9 @@ fun View.fadeIn() {
     })
 }
 
-//animate changing the view visibility
+/**
+ * Animate changing the view visibility.
+ */
 fun View.fadeOut() {
     this.animate().alpha(0f).setListener(object : AnimatorListenerAdapter() {
         override fun onAnimationEnd(animation: Animator) {

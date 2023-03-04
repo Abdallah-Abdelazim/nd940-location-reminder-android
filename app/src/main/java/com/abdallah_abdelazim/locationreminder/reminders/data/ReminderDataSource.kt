@@ -1,7 +1,7 @@
-package com.abdallah_abdelazim.locationreminder.locationreminders.data
+package com.abdallah_abdelazim.locationreminder.reminders.data
 
-import com.abdallah_abdelazim.locationreminder.locationreminders.data.dto.ReminderDTO
-import com.abdallah_abdelazim.locationreminder.locationreminders.data.dto.Result
+import com.abdallah_abdelazim.locationreminder.reminders.data.dto.ReminderDTO
+import com.abdallah_abdelazim.locationreminder.reminders.data.dto.Result
 
 /**
  * Main entry point for accessing reminders data.

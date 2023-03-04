@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.abdallah_abdelazim.locationreminder.locationreminders.reminderslist.ReminderDataItem" />
+            type="com.abdallah_abdelazim.locationreminder.reminders.reminderslist.ReminderDataItem" />
     </data>
 
     <androidx.cardview.widget.CardView

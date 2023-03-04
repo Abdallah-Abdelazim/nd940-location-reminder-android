@@ -1,5 +1,6 @@
 package com.abdallah_abdelazim.locationreminder.base
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
@@ -12,11 +13,7 @@ abstract class BaseRecyclerViewAdapter<T>(private val callback: ((item: T) -> Un
     RecyclerView.Adapter<DataBindingViewHolder<T>>() {
 
     private var _items: MutableList<T> = mutableListOf()
-
-    /**
-     * Returns the _items data
-     */
-    private val items: List<T>?
+    val items: List<T>
         get() = this._items
 
     override fun getItemCount() = _items.size
@@ -43,18 +40,20 @@ abstract class BaseRecyclerViewAdapter<T>(private val callback: ((item: T) -> Un
     fun getItem(position: Int) = _items[position]
 
     /**
-     * Adds data to the actual Dataset
+     * Adds data to the actual Dataset.
      *
-     * @param items to be merged
+     * @param items to be merged.
      */
+    @SuppressLint("NotifyDataSetChanged")
     fun addData(items: List<T>) {
         _items.addAll(items)
         notifyDataSetChanged()
     }
 
     /**
-     * Clears the _items data
+     * Clears the _items data.
      */
+    @SuppressLint("NotifyDataSetChanged")
     fun clear() {
         _items.clear()
         notifyDataSetChanged()
@@ -63,8 +62,6 @@ abstract class BaseRecyclerViewAdapter<T>(private val callback: ((item: T) -> Un
     @LayoutRes
     abstract fun getLayoutRes(viewType: Int): Int
 
-    open fun getLifecycleOwner(): LifecycleOwner? {
-        return null
-    }
+    open fun getLifecycleOwner(): LifecycleOwner? = null
 }
 
