@@ -1,6 +1,11 @@
 plugins {
     id "com.android.application"
     id "org.jetbrains.kotlin.android"
+    id "kotlin-parcelize"
+    id "androidx.navigation.safeargs"
+    id "org.jetbrains.kotlin.kapt"
+    id "com.google.devtools.ksp"
+    id "com.google.android.libraries.mapsplatform.secrets-gradle-plugin"
     id "com.google.gms.google-services"
 }
 
@@ -13,7 +18,7 @@ android {
         minSdk 21
         targetSdk 33
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -33,23 +38,49 @@ android {
     }
     buildFeatures {
         viewBinding true
+        dataBinding true
+    }
+    secrets {
+        propertiesFileName 'secrets.properties'
     }
 }
 
 dependencies {
 
-    implementation "androidx.core:core-ktx:1.7.0"
-    implementation "androidx.appcompat:appcompat:1.6.1"
-    implementation "com.google.android.material:material:1.8.0"
-    implementation "androidx.constraintlayout:constraintlayout:2.1.4"
-    implementation "androidx.navigation:navigation-fragment-ktx:2.5.3"
-    implementation "androidx.navigation:navigation-ui-ktx:2.5.3"
+    // Core
+    implementation "androidx.core:core-ktx:$versions.core_ktx"
+    implementation "androidx.appcompat:appcompat:$versions.appcompat"
+    implementation "androidx.activity:activity-ktx:$versions.activity_ktx"
+    implementation "androidx.fragment:fragment-ktx:$versions.fragment_ktx"
+    implementation "androidx.annotation:annotation:$versions.annotation"
 
-    // Firebase
-    implementation platform("com.google.firebase:firebase-bom:31.2.3")
-    implementation "com.google.firebase:firebase-analytics-ktx"
+    // UI
+    implementation "com.google.android.material:material:$versions.material"
+    implementation "androidx.constraintlayout:constraintlayout:$versions.constraintlayout"
+    implementation "androidx.recyclerview:recyclerview:$versions.recyclerview"
 
-    testImplementation "junit:junit:4.13.2"
-    androidTestImplementation "androidx.test.ext:junit:1.1.5"
-    androidTestImplementation "androidx.test.espresso:espresso-core:3.5.1"
+    // Lifecycle
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycle"
+    implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:$versions.lifecycle"
+
+    // Jetpack Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$versions.navigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$versions.navigation"
+
+    // Room
+    implementation "androidx.room:room-runtime:$versions.room"
+    implementation "androidx.room:room-ktx:$versions.room"
+    ksp "androidx.room:room-compiler:$versions.room"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutines_android"
+
+    // Koin DI
+    implementation "io.insert-koin:koin-android:$versions.koin"
+
+    // Testing
+    testImplementation "junit:junit:$versions.test_junit"
+    androidTestImplementation "androidx.test.ext:junit:$versions.androidtest_junit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$versions.espresso"
 }
