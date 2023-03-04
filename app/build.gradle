@@ -41,7 +41,7 @@ android {
         dataBinding true
     }
     secrets {
-        propertiesFileName 'secrets.properties'
+        propertiesFileName "secrets.properties"
     }
 }
 
@@ -78,6 +78,12 @@ dependencies {
 
     // Koin DI
     implementation "io.insert-koin:koin-android:$versions.koin"
+
+    // Firebase
+    implementation platform("com.google.firebase:firebase-bom:$versions.firebase_bom")
+    implementation "com.google.firebase:firebase-analytics-ktx"
+    implementation "com.google.firebase:firebase-auth-ktx"
+    implementation "com.firebaseui:firebase-ui-auth:$versions.firebase_ui_auth"
 
     // Testing
     testImplementation "junit:junit:$versions.test_junit"

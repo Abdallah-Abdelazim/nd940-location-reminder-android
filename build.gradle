@@ -28,5 +28,7 @@ ext {
             androidtest_junit : "1.1.5",
             espresso          : "3.5.1",
             koin              : "3.3.2",
+            firebase_bom      : "31.2.3",
+            firebase_ui_auth  : "5.0.0"
     ]
 }
