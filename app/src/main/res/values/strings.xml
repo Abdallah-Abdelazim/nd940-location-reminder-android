@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Location Reminder</string>
 
+    <string name="label_save_reminder_fragment">Add Reminder</string>
+    <string name="label_select_location_fragment">Select Location</string>
+
     <string name="error_happened">Error happened</string>
     <string name="retry">Retry</string>
     <string name="no_data">No Data</string>

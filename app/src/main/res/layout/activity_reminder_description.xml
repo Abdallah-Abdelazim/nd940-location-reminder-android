@@ -7,7 +7,7 @@
         <!--Data item that holds the reminder details-->
         <variable
             name="reminderDataItem"
-            type="com.abdallah_abdelazim.locationreminder.reminders.reminderslist.ReminderDataItem" />
+            type="com.abdallah_abdelazim.locationreminder.feature.reminders.reminderslist.ReminderUiModel" />
     </data>
 
     <LinearLayout

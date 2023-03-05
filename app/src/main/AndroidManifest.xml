@@ -24,7 +24,7 @@
             android:value="${MAPS_API_KEY}" />
 
         <activity
-            android:name=".authentication.AuthenticationActivity"
+            android:name=".feature.authentication.AuthenticationActivity"
             android:exported="true">
 
             <intent-filter>
@@ -35,17 +35,17 @@
 
         </activity>
 
-        <activity android:name=".reminders.RemindersActivity" />
+        <activity android:name=".feature.reminders.RemindersActivity" />
 
-        <activity android:name=".reminders.ReminderDescriptionActivity" />
+        <activity android:name=".feature.reminders.ReminderDescriptionActivity" />
 
         <receiver
-            android:name=".reminders.geofence.GeofenceBroadcastReceiver"
+            android:name=".feature.reminders.geofence.GeofenceBroadcastReceiver"
             android:enabled="true"
             android:exported="true" />
 
         <service
-            android:name=".reminders.geofence.GeofenceTransitionsJobIntentService"
+            android:name=".feature.reminders.geofence.GeofenceTransitionsJobIntentService"
             android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE" />
     </application>
