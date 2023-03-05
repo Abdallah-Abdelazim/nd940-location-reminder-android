@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import com.abdallah_abdelazim.locationreminder.R
 import com.abdallah_abdelazim.locationreminder.databinding.ActivityAuthenticationBinding
 import com.abdallah_abdelazim.locationreminder.reminders.RemindersActivity
+import com.abdallah_abdelazim.locationreminder.utils.fadeIn
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
@@ -59,6 +60,7 @@ class AuthenticationActivity : AppCompatActivity() {
                     }
                     AuthenticationStatus.LOGGED_OUT -> {
                         Log.d(TAG, "User is logged out")
+                        binding.btnLogin.fadeIn()
                     }
                 }
             }
@@ -81,6 +83,8 @@ class AuthenticationActivity : AppCompatActivity() {
                         AuthUI.IdpConfig.GoogleBuilder().build()
                     )
                 )
+                .setTheme(R.style.Theme_LocationReminder)
+                .setLogo(R.drawable.ic_app_logo)
                 .build()
         )
     }
