@@ -14,7 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "409301366186-2pnpb2g4d9jfn0u4e1h9a1j0rbvufa0j.apps.googleusercontent.com",
+          "client_id": "409301366186-j6qfis6p4i2c1lj3r3em59hjm57f5rt6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.abdallah_abdelazim.locationreminder",
+            "certificate_hash": "31bbf48772c6d98e736eea28894d1ecd09dbeb59"
+          }
+        },
+        {
+          "client_id": "409301366186-9k67hfr6dcerhfgf05an99lmo9hj2k68.apps.googleusercontent.com",
           "client_type": 3
         }
       ],

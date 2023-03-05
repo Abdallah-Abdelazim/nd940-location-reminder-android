@@ -36,6 +36,7 @@
     <string name="err_select_location">Please select location</string>
 
     <!-- Error strings -->
+    <string name="login_failed">Login failed!</string>
     <string name="geofence_unknown_error">Unknown error: the Geofence service is not available now.</string>
     <string name="geofence_not_available">Geofence service is not available now. Go to Settings>Location>Mode and choose High accuracy.</string>
     <string name="geofence_too_many_geofences">Your app has registered too many geofences.</string>

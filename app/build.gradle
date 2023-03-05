@@ -91,6 +91,7 @@ dependencies {
     implementation "com.google.firebase:firebase-analytics-ktx"
     implementation "com.google.firebase:firebase-auth-ktx"
     implementation "com.firebaseui:firebase-ui-auth:$versions.firebase_ui_auth"
+    implementation 'com.google.android.gms:play-services-auth:20.4.1'
 
     // Testing
     testImplementation "junit:junit:$versions.test_junit"
