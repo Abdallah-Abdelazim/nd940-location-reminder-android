@@ -1,15 +1,18 @@
 package com.abdallah_abdelazim.locationreminder.reminders.reminderslist
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import com.abdallah_abdelazim.locationreminder.R
+import com.abdallah_abdelazim.locationreminder.authentication.AuthenticationActivity
 import com.abdallah_abdelazim.locationreminder.base.BaseFragment
 import com.abdallah_abdelazim.locationreminder.base.NavigationCommand
 import com.abdallah_abdelazim.locationreminder.databinding.FragmentRemindersBinding
 import com.abdallah_abdelazim.locationreminder.utils.setDisplayHomeAsUpEnabled
 import com.abdallah_abdelazim.locationreminder.utils.setTitle
 import com.abdallah_abdelazim.locationreminder.utils.setup
+import com.firebase.ui.auth.AuthUI
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ReminderListFragment : BaseFragment() {
@@ -71,16 +74,23 @@ class ReminderListFragment : BaseFragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.logout -> {
-//                TODO: add the logout implementation
+                logout()
             }
         }
         return super.onOptionsItemSelected(item)
 
     }
 
+    private fun logout() {
+        AuthUI.getInstance().signOut(requireContext())
+        val intent = Intent(requireContext(), AuthenticationActivity::class.java)
+        startActivity(intent)
+        requireActivity().finish()
+    }
+
+    @Suppress("OVERRIDE_DEPRECATION")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-//        display logout as menu item
         inflater.inflate(R.menu.main_menu, menu)
     }
 

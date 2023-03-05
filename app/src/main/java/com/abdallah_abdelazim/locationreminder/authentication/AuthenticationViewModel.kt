@@ -9,21 +9,22 @@ class AuthenticationViewModel : ViewModel() {
 
     private val firebaseAuth = FirebaseAuth.getInstance()
 
-    val authStatusFlow = callbackFlow {
+    val authStatusFlow
+        get() = callbackFlow {
 
-        val authStateListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
-            trySend(
-                if (firebaseAuth.currentUser != null)
-                    AuthenticationStatus.LOGGED_IN
-                else AuthenticationStatus.LOGGED_OUT
-            )
+            val authStateListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
+                trySend(
+                    if (firebaseAuth.currentUser != null)
+                        AuthenticationStatus.LOGGED_IN
+                    else AuthenticationStatus.LOGGED_OUT
+                )
+            }
+
+            firebaseAuth.addAuthStateListener(authStateListener)
+
+            awaitClose {
+                firebaseAuth.removeAuthStateListener(authStateListener)
+            }
         }
-
-        firebaseAuth.addAuthStateListener(authStateListener)
-
-        awaitClose {
-            firebaseAuth.removeAuthStateListener(authStateListener)
-        }
-    }
 
 }
