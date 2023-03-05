@@ -3,6 +3,7 @@ package com.abdallah_abdelazim.locationreminder.reminders.reminderslist
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.abdallah_abdelazim.locationreminder.R
 import com.abdallah_abdelazim.locationreminder.authentication.AuthenticationActivity
@@ -82,10 +83,14 @@ class ReminderListFragment : BaseFragment() {
     }
 
     private fun logout() {
-        AuthUI.getInstance().signOut(requireContext())
-        val intent = Intent(requireContext(), AuthenticationActivity::class.java)
-        startActivity(intent)
-        requireActivity().finish()
+        AuthUI.getInstance().signOut(requireContext()).addOnSuccessListener {
+            val intent = Intent(requireContext(), AuthenticationActivity::class.java)
+            startActivity(intent)
+            requireActivity().finish()
+        }.addOnFailureListener {
+            Toast.makeText(requireContext(), R.string.logout_failed, Toast.LENGTH_SHORT)
+                .show()
+        }
     }
 
     @Suppress("OVERRIDE_DEPRECATION")
