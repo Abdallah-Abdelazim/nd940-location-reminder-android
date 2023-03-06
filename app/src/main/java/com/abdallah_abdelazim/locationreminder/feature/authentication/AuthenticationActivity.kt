@@ -26,7 +26,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  */
 class AuthenticationActivity : AppCompatActivity() {
 
-    private val viewModel: com.abdallah_abdelazim.locationreminder.feature.authentication.AuthenticationViewModel by viewModel()
+    private val viewModel: AuthenticationViewModel by viewModel()
 
     private lateinit var binding: ActivityAuthenticationBinding
 
@@ -51,9 +51,9 @@ class AuthenticationActivity : AppCompatActivity() {
         lifecycleScope.launchWhenCreated {
             viewModel.authStatusFlow.collect { authStatus ->
                 when (authStatus) {
-                    com.abdallah_abdelazim.locationreminder.feature.authentication.AuthenticationStatus.LOGGED_IN -> {
+                    AuthenticationStatus.LOGGED_IN -> {
                         Log.d(
-                            com.abdallah_abdelazim.locationreminder.feature.authentication.AuthenticationActivity.Companion.TAG,
+                            TAG,
                             "User is logged in"
                         )
 
@@ -62,9 +62,9 @@ class AuthenticationActivity : AppCompatActivity() {
                         startActivity(intent)
                         finish()
                     }
-                    com.abdallah_abdelazim.locationreminder.feature.authentication.AuthenticationStatus.LOGGED_OUT -> {
+                    AuthenticationStatus.LOGGED_OUT -> {
                         Log.d(
-                            com.abdallah_abdelazim.locationreminder.feature.authentication.AuthenticationActivity.Companion.TAG,
+                            TAG,
                             "User is logged out"
                         )
                         binding.btnLogin.fadeIn()
@@ -103,12 +103,12 @@ class AuthenticationActivity : AppCompatActivity() {
             val response = IdpResponse.fromResultIntent(result.data)
             if (result.resultCode == Activity.RESULT_OK) {
                 Log.d(
-                    com.abdallah_abdelazim.locationreminder.feature.authentication.AuthenticationActivity.Companion.TAG,
+                    TAG,
                     "Login success - user: ${FirebaseAuth.getInstance().currentUser?.displayName}"
                 )
             } else {
                 Log.e(
-                    com.abdallah_abdelazim.locationreminder.feature.authentication.AuthenticationActivity.Companion.TAG,
+                    TAG,
                     "Login failed - error: ${response?.error?.errorCode}"
                 )
                 Toast.makeText(this, R.string.login_failed, Toast.LENGTH_SHORT).show()
@@ -118,8 +118,7 @@ class AuthenticationActivity : AppCompatActivity() {
 
     companion object {
 
-        private val TAG =
-            com.abdallah_abdelazim.locationreminder.feature.authentication.AuthenticationActivity::class.simpleName
+        private val TAG = AuthenticationActivity::class.simpleName
 
     }
 
