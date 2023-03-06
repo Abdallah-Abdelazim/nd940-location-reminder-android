@@ -41,6 +41,10 @@ class ReminderListFragment : BaseFragment() {
 
         binding.refreshLayout.setOnRefreshListener { viewModel.loadReminders() }
 
+        viewModel.showLoading.observe(viewLifecycleOwner) { isLoading ->
+            if (!isLoading) binding.refreshLayout.isRefreshing = false;
+        }
+
         setupRecyclerView()
 
         binding.addReminderFAB.setOnClickListener {
