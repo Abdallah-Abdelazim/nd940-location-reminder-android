@@ -19,8 +19,7 @@ class ReminderListFragment : BaseFragment() {
     override val viewModel: RemindersListViewModel by viewModel()
 
     private var _binding: FragmentRemindersBinding? = null
-    private val binding
-        get() = _binding!!
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -96,6 +95,11 @@ class ReminderListFragment : BaseFragment() {
             Toast.makeText(requireContext(), R.string.logout_failed, Toast.LENGTH_SHORT)
                 .show()
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     @Suppress("OVERRIDE_DEPRECATION")
