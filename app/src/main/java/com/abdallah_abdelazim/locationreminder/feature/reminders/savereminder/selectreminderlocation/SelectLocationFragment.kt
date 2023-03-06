@@ -135,7 +135,7 @@ class SelectLocationFragment : BaseFragment(), OnMapReadyCallback {
                                 .title(getString(R.string.current_position_marker_title))
                         )
 
-                        val zoom = 20f
+                        val zoom = 16f
                         map.moveCamera(CameraUpdateFactory.newLatLngZoom(currentPosition, zoom))
                     }
                 }
