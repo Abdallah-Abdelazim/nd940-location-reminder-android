@@ -39,17 +39,18 @@ class ReminderListFragment : BaseFragment() {
 
         setHasOptionsMenu(true)
 
-        binding.refreshLayout.setOnRefreshListener { viewModel.loadReminders() }
+        setupRecyclerView()
+        setupUiListeners()
 
         viewModel.showLoading.observe(viewLifecycleOwner) { isLoading ->
             if (!isLoading) binding.refreshLayout.isRefreshing = false;
         }
+    }
 
-        setupRecyclerView()
+    private fun setupUiListeners() {
+        binding.refreshLayout.setOnRefreshListener { viewModel.loadReminders() }
 
-        binding.addReminderFAB.setOnClickListener {
-            navigateToAddReminder()
-        }
+        binding.addReminderFAB.setOnClickListener { navigateToAddReminder() }
     }
 
     override fun onResume() {
