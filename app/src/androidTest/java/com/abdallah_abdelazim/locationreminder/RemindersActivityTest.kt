@@ -1,72 +1,132 @@
 package com.abdallah_abdelazim.locationreminder
 
-import android.app.Application
-import androidx.test.core.app.ApplicationProvider.getApplicationContext
+import androidx.test.core.app.ApplicationProvider
+import androidx.test.core.app.launchActivity
+import androidx.test.espresso.Espresso
+import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.IdlingRegistry
+import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
+import androidx.test.rule.ActivityTestRule
+import com.abdallah_abdelazim.locationreminder.feature.reminders.RemindersActivity
 import com.abdallah_abdelazim.locationreminder.feature.reminders.data.ReminderDataSource
+import com.abdallah_abdelazim.locationreminder.feature.reminders.data.dto.ReminderDto
 import com.abdallah_abdelazim.locationreminder.feature.reminders.data.local.RemindersDatabase
 import com.abdallah_abdelazim.locationreminder.feature.reminders.data.local.RemindersLocalRepository
 import com.abdallah_abdelazim.locationreminder.feature.reminders.reminderslist.RemindersListViewModel
 import com.abdallah_abdelazim.locationreminder.feature.reminders.savereminder.SaveReminderViewModel
-
+import com.abdallah_abdelazim.locationreminder.util.DataBindingIdlingResource
+import com.abdallah_abdelazim.locationreminder.util.EspressoIdlingResource
+import com.abdallah_abdelazim.locationreminder.util.RecyclerViewItemCountAssertion
+import com.abdallah_abdelazim.locationreminder.util.monitorActivity
 import kotlinx.coroutines.runBlocking
+import org.junit.After
 import org.junit.Before
+import org.junit.Rule
+import org.junit.Test
 import org.junit.runner.RunWith
+import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
 import org.koin.dsl.module
-import org.koin.test.AutoCloseKoinTest
+import org.koin.test.KoinTest
 import org.koin.test.get
+
 
 @RunWith(AndroidJUnit4::class)
 @LargeTest
-//END TO END test to black box test the app
-class RemindersActivityTest :
-    AutoCloseKoinTest() {// Extended Koin Test - embed autoclose @after method to close Koin after every test
+class RemindersActivityTest : KoinTest {
 
     private lateinit var repository: ReminderDataSource
-    private lateinit var appContext: Application
 
-    /**
-     * As we use Koin as a Service Locator Library to develop our code, we'll also use Koin to test our code.
-     * at this step we will initialize Koin related code to be able to use it in out testing.
-     */
+    private lateinit var viewModel: SaveReminderViewModel
+
+    private val dataBindingIdlingResource = DataBindingIdlingResource()
+
+    private val testReminderDto = ReminderDto(
+        "TestTitle",
+        "TestDescription",
+        "TestLocation",
+        1.0,
+        1.0
+    )
+
+    @get:Rule
+    var activityTestRule: ActivityTestRule<RemindersActivity> =
+        ActivityTestRule(RemindersActivity::class.java)
+
     @Before
     fun init() {
-        stopKoin()//stop the original app koin
-        appContext = getApplicationContext()
-        val myModule = module {
+        stopKoin()
+
+        val koinModule = module {
+            single { RemindersDatabase.createRemindersDao(ApplicationProvider.getApplicationContext()) }
+
+            single<ReminderDataSource> { RemindersLocalRepository(get()) }
+
             viewModel {
-                RemindersListViewModel(
-                    appContext,
-                    get() as ReminderDataSource
-                )
+                RemindersListViewModel(ApplicationProvider.getApplicationContext(), get())
             }
-            single {
-                SaveReminderViewModel(
-                    appContext,
-                    get() as ReminderDataSource
-                )
+
+            viewModel {
+                SaveReminderViewModel(ApplicationProvider.getApplicationContext(), get())
             }
-            single { RemindersLocalRepository(get()) as ReminderDataSource }
-            single { RemindersDatabase.createRemindersDao(appContext) }
         }
-        //declare a new koin module
+
         startKoin {
-            modules(listOf(myModule))
+            androidContext(ApplicationProvider.getApplicationContext())
+            modules(koinModule)
         }
-        //Get our real repository
+
         repository = get()
 
-        //clear the data to start fresh
-        runBlocking {
-            repository.deleteAllReminders()
-        }
+        viewModel = SaveReminderViewModel(ApplicationProvider.getApplicationContext(), repository)
+
+        runBlocking { repository.deleteAllReminders() }
     }
 
+    @Before
+    fun registerEspressoIdlingResource() {
+        IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
+        IdlingRegistry.getInstance().register(dataBindingIdlingResource)
+    }
 
-//    TODO: add End to End testing to the app
+    @After
+    fun unregisterEspressoIdlingResource() {
+        IdlingRegistry.getInstance().unregister(EspressoIdlingResource.countingIdlingResource)
+        IdlingRegistry.getInstance().unregister(dataBindingIdlingResource)
+    }
 
+    @Test
+    fun testAddReminder_showInRemindersList() = runBlocking {
+        val activityScenario = launchActivity<RemindersActivity>()
+
+        dataBindingIdlingResource.monitorActivity(activityScenario)
+
+        onView(withId(R.id.addReminderFAB))
+            .perform(ViewActions.click())
+
+        onView(withId(R.id.reminderTitle))
+            .perform(ViewActions.typeText(testReminderDto.title))
+
+        onView(withId(R.id.reminderDescription))
+            .perform(ViewActions.typeText(testReminderDto.description))
+
+        Espresso.closeSoftKeyboard()
+
+        onView(withId(R.id.selectLocation)).perform(ViewActions.click())
+
+        onView(withId(R.id.fragment_map)).perform(ViewActions.longClick())
+        onView(withId(R.id.btn_save)).perform(ViewActions.click())
+
+        onView(withId(R.id.saveReminder)).perform(ViewActions.click())
+
+        onView(withId(R.id.remindersRecyclerView))
+            .check(RecyclerViewItemCountAssertion(1));
+
+        activityScenario.close()
+    }
 }
