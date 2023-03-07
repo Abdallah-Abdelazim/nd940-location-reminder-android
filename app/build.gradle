@@ -40,6 +40,10 @@ android {
         viewBinding true
         dataBinding true
     }
+    testOptions.unitTests {
+        includeAndroidResources = true
+        returnDefaultValues = true
+    }
     secrets {
         propertiesFileName "secrets.properties"
     }
@@ -93,34 +97,40 @@ dependencies {
     implementation "com.firebaseui:firebase-ui-auth:$versions.firebase_ui_auth"
     implementation "com.google.android.gms:play-services-auth:$versions.play_services_auth"
 
-    // Testing
-    testImplementation "junit:junit:$versions.test_junit"
-    testImplementation "org.hamcrest:hamcrest-all:$versions.hamcrest"
-    testImplementation "androidx.arch.core:core-testing:$versions.arch_testing"
-    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$versions.coroutines_android"
+    // Dependencies for local unit tests
+    testImplementation "junit:junit:$junitVersion"
+    testImplementation "org.hamcrest:hamcrest-all:$hamcrestVersion"
+    testImplementation "androidx.arch.core:core-testing:$archTestingVersion"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
     testImplementation "org.robolectric:robolectric:$versions.robolectric"
     testImplementation "com.google.truth:truth:$versions.truth"
     testImplementation "org.mockito:mockito-core:$versions.mockito"
-    testImplementation "androidx.test:core-ktx:$versions.core_ktx"
-    testImplementation "androidx.test:rules:$versions.androidx_test"
+    testImplementation "io.insert-koin:koin-test:$versions.koin"
 
-    androidTestImplementation "androidx.test.ext:junit:$versions.androidtest_junit"
-    androidTestImplementation "androidx.test.ext:junit-ktx:$versions.androidtest_junit"
-    androidTestImplementation "androidx.test:core-ktx:$versions.core_ktx"
-    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$versions.coroutines_android"
-    androidTestImplementation "androidx.test:core:$versions.androidx_test"
-    androidTestImplementation "androidx.test:rules:$versions.androidx_test"
+    // AndroidX Test - JVM testing
+    testImplementation "androidx.test:core-ktx:$androidXTestCoreVersion"
+    testImplementation "androidx.test.ext:junit-ktx:$androidXTestExtKotlinRunnerVersion"
+    testImplementation "androidx.test:rules:$androidXTestRulesVersion"
+
+    // AndroidX Test - Instrumented testing
+    androidTestImplementation "androidx.test:core-ktx:$androidXTestCoreVersion"
+    androidTestImplementation "androidx.test.ext:junit-ktx:$androidXTestExtKotlinRunnerVersion"
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
+    androidTestImplementation "androidx.test:rules:$androidXTestRulesVersion"
     androidTestImplementation "androidx.room:room-testing:$versions.room"
-    androidTestImplementation "androidx.arch.core:core-testing:$versions.arch_testing"
+    androidTestImplementation "androidx.arch.core:core-testing:$archTestingVersion"
     androidTestImplementation "org.robolectric:annotations:$versions.robolectric"
     androidTestImplementation "androidx.test.espresso:espresso-core:$versions.espresso"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$versions.espresso"
     androidTestImplementation "androidx.test.espresso:espresso-intents:$versions.espresso"
     androidTestImplementation "androidx.test.espresso.idling:idling-concurrent:$versions.espresso"
-    androidTestImplementation "androidx.test.espresso:espresso-idling-resource:$versions.espresso"
-    androidTestImplementation "androidx.fragment:fragment-testing:$versions.fragment_ktx"
+    androidTestImplementation "junit:junit:$junitVersion"
+    // Once https://issuetracker.google.com/127986458 is fixed this can be testImplementation
+    debugImplementation "androidx.fragment:fragment-testing:$fragmentVersion"
+    implementation "androidx.test:core:$androidXTestCoreVersion"
+    implementation "androidx.fragment:fragment-ktx:$fragmentVersion"
     androidTestImplementation "org.mockito:mockito-core:$versions.mockito"
     androidTestImplementation "com.linkedin.dexmaker:dexmaker-mockito:$versions.dexmaker_mockito"
-    androidTestImplementation("io.insert-koin:koin-test:$versions.koin")
-    androidTestImplementation("io.insert-koin:koin-test-junit4:$versions.koin")
+    androidTestImplementation "io.insert-koin:koin-test:$versions.koin"
 }

@@ -4,26 +4,35 @@ import com.abdallah_abdelazim.locationreminder.feature.reminders.data.ReminderDa
 import com.abdallah_abdelazim.locationreminder.feature.reminders.data.dto.ReminderDto
 import com.abdallah_abdelazim.locationreminder.feature.reminders.data.dto.Result
 
-//Use FakeDataSource that acts as a test double to the LocalDataSource
-class FakeDataSource : ReminderDataSource {
+/**
+ * FakeDataSource acts as a test double to the LocalDataSource.
+ */
+class FakeDataSource(private val remindersList: MutableList<ReminderDto> = mutableListOf()) :
+    ReminderDataSource {
 
-//    TODO: Create a fake data source to act as a double to the real data source
+    var shouldError = false
 
-    override suspend fun getReminders(): Result<List<ReminderDto>> {
-        TODO("Return the reminders")
+    override suspend fun getReminders(): Result<List<ReminderDto>> = if (shouldError) {
+        Result.Error("ERROR")
+    } else {
+        Result.Success(remindersList)
     }
 
     override suspend fun saveReminder(reminder: ReminderDto) {
-        TODO("save the reminder")
+        remindersList.add(reminder)
     }
 
-    override suspend fun getReminder(id: String): Result<ReminderDto> {
-        TODO("return the reminder with the id")
+    override suspend fun getReminder(id: String): Result<ReminderDto> = if (shouldError) {
+        Result.Error("ERROR")
+    } else {
+        val reminder = remindersList.find { it.id == id }
+
+        if (reminder != null) Result.Success(reminder)
+        else Result.Error("Not found")
     }
 
     override suspend fun deleteAllReminders() {
-        TODO("delete all the reminders")
+        remindersList.clear()
     }
-
 
 }
